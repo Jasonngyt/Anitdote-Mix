@@ -1,81 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    
-        <title>Antidote Mix Bar</title>
-    
-        <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    
-        <!-- My Style CSS -->
-        <link href="css/style.css" rel="stylesheet" type="text/css">
-        
-        <!-- Jquery -->
-        <script src="js/jquery-3.4.1.min.js"></script>
-        
-        <script>
-            $(document).ready(function () {
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Antidote Mix Bar</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- My Style CSS -->
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+
+    <!-- Jquery -->
+    <script src="js/jquery-3.4.1.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $("#frmSearch").submit(function(e) {
+                e.preventDefault();
+                let query = $("#txtQuery").val();
+                findDrink(query);
+            });
+
+            function findDrink(query) {
                 var settings = {
-            	"async": true,
-            	"crossDomain": true,
-            	"url": "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita",
-            	"method": "GET",
-            	"headers": {
-            		"x-rapidapi-host": "the-cocktail-db.p.rapidapi.com",
-            		"x-rapidapi-key": "bda290991cmshd3ef5158a720af1p13fb47jsn2162b60eb203"
-            	}
-            }
-        }
-            
-            $.ajax(settings).done(function (response) {
-            	console.log(response);
-            });
-                	
-                	//let responseSummary = "";
-        
-                    $("#response").html("strDrink");
+                    "url": "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + query,
+                    "method": "GET",
+                }
+                $.ajax(settings).done(function(response) {
+                    //normal JS looping
+                    let responseSummary = "";
+
+                    console.log("drinks" + response['drinks'].length)
+                    for (var i = 0; i < response['drinks'].length; i++) {
+                        //var obj = response[i];
+
+                        responseSummary += response['drinks'][i]['strInstructions'];
+                    }
+                    $("#response").html(responseSummary);
                 });
+
             }
-            });
-        </script>
-    
-    </head>
+
+
+        });
+    </script>
+
+</head>
 
 <body>
-    
-    <div id="response"></div>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
     <div class="container-fluid img-fluid" id="shopName">
-         <h1>ANTIDOTE MIX</h1>
+        <h1>ANTIDOTE MIX</h1>
     </div>
 
-    <div class="container">
-      <label for="searchDrink">Can I have your order?</label>
-         <div class="row">
+    <form id="frmSearch" action="">
+        <label for="frmSearch">Can I have your order?</label>
+        <div class="row">
             <div>
-                <input type="text" id="searchDrink" class="form-control" placeholder="Enter your favourite drink or ingredient">
+                <input type="text" name="txtQuery" id="txtQuery">
             </div>
             <div>
-                <button type="button" class="btn btn-dark">Search</button>
+                <input type="submit" id="btnSubmit" name="btnSubmit" value="Search" class="btn btn-dark">
             </div>
-        </div> 
-    </div>
-    
+        </div>
+    </form>
+    <div id="response"> </div>
+
 </body>
 
 </html>
