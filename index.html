@@ -1,26 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-    <title>Antidote Mix Bar</title>
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-    <!-- My Style CSS -->
-    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
     
-    <!-- Jquery -->
-<script
-  src="https://code.jquery.com/jquery-3.4.1.min.js"
-  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-  crossorigin="anonymous"></script>    
-    <script>
-        $( document ).ready(function() {
-            var settings = {
+        <title>Antidote Mix Bar</title>
+    
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
+        <!-- My Style CSS -->
+        <link href="css/style.css" rel="stylesheet" type="text/css">
+        
+        <!-- Jquery -->
+        <script src="js/jquery-3.4.1.min.js"></script>
+        
+        <script>
+            $(document).ready(function () {
+                var settings = {
             	"async": true,
             	"crossDomain": true,
             	"url": "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita",
@@ -30,23 +28,21 @@
             		"x-rapidapi-key": "bda290991cmshd3ef5158a720af1p13fb47jsn2162b60eb203"
             	}
             }
-        
+        }
+            
             $.ajax(settings).done(function (response) {
             	console.log(response);
-            	
-            	let responseSummary = "";
-    
-                for (var i = 0; i < response.length; i++) {
-                    var obj = response[i];
-                    
-                    responseSummary += "Drink" + i + ":" + response[i]['strDrink'] + "<br/>";
-                }
-                $("#response").html(responseSummary);
             });
-        })
-    </script>
-
-</head>
+                	
+                	//let responseSummary = "";
+        
+                    $("#response").html("strDrink");
+                });
+            }
+            });
+        </script>
+    
+    </head>
 
 <body>
     
