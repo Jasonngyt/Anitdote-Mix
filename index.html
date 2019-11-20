@@ -32,15 +32,18 @@
                 }
                 $.ajax(settings).done(function(response) {
                     //normal JS looping
-                    let responseSummary = "";
+                    let responseInstruction = "";
+                    let responseName = "";
 
                     console.log("drinks" + response['drinks'].length)
                     for (var i = 0; i < response['drinks'].length; i++) {
                         //var obj = response[i];
 
-                        responseSummary += response['drinks'][i]['strInstructions'];
+                        responseInstruction += response['drinks'][i]['strInstructions'];
+                        responseName += response['drinks'][i]['strDrink'];
                     }
-                    $("#response").html(responseSummary);
+                    $("#instruction").html(responseInstruction);
+                    $("#name").html(responseName);
                 });
 
             }
@@ -68,7 +71,9 @@
             </div>
         </div>
     </form>
-    <div id="response"> </div>
+    <div id="name"> </div> <br>
+    <div id="instruction"> </div>
+
 
 </body>
 
