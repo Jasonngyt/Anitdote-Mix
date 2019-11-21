@@ -32,18 +32,24 @@
                 }
                 $.ajax(settings).done(function(response) {
                     //normal JS looping
-                    let responseInstruction = "";
-                    let responseName = "";
+                    let responseSummary = "";
+                    let responseInstruction = [];
+                    let responseName = [];
+                    let responsePhoto = [];
 
-                    console.log("drinks" + response['drinks'].length)
                     for (var i = 0; i < response['drinks'].length; i++) {
-                        //var obj = response[i];
 
-                        responseInstruction += response['drinks'][i]['strInstructions'];
-                        responseName += response['drinks'][i]['strDrink'];
+                        responseName[i] = response['drinks'][i]['strDrink'];
+                        responseInstruction[i] = response['drinks'][i]['strInstructions'];
+                        responsePhoto[i] = response['drinks'][i]['strDrinkThumb'];
+
+                        responseSummary += "<br> <br>" + responseName[i] + "<br>" + "<img src = " + responsePhoto[i] + ">" + "<br>" +
+                            responseInstruction[i]
+                        $("#responseSummary").html(responseSummary);
+
                     }
-                    $("#instruction").html(responseInstruction);
-                    $("#name").html(responseName);
+
+
                 });
 
             }
@@ -71,8 +77,7 @@
             </div>
         </div>
     </form>
-    <div id="name"> </div> <br>
-    <div id="instruction"> </div>
+    <div id="responseSummary"> </div> <br>
 
 
 </body>
