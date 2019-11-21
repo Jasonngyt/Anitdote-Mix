@@ -43,41 +43,34 @@
                         responseInstruction[i] = response['drinks'][i]['strInstructions'];
                         responsePhoto[i] = response['drinks'][i]['strDrinkThumb'];
 
-                        responseSummary += "<br> <br>" + responseName[i] + "<br>" + "<img src = " + responsePhoto[i] + ">" + "<br>" +
-                            responseInstruction[i]
+                        responseSummary += "<tr> <td> <img src = " + responsePhoto[i] + " style='width:200px;height:200px'>" + "<br> <h4>" + responseName[i] + " </h4><br><td> <h5>Preparation </h5><br>" +
+                            responseInstruction[i] + "<br>";
                         $("#responseSummary").html(responseSummary);
 
                     }
-
-
                 });
-
             }
-
-
         });
     </script>
 
 </head>
 
-<body>
-
-    <div class="container-fluid img-fluid" id="shopName">
+<body class="bg-dark">
+    <div class="text-center text-white">
         <h1>ANTIDOTE MIX</h1>
+        <form id="frmSearch" action="">
+            <label for="frmSearch"><h2>Can I have your order?</h2></label>
+            <div class="row justify-content-center text-white">
+                <div>
+                    <input type="text" name="txtQuery" id="txtQuery">
+                </div>
+                <div>
+                    <input type="submit" id="btnSubmit" name="btnSubmit" value="Search" class="btn btn-dark">
+                </div>
+            </div>
+        </form>
     </div>
-
-    <form id="frmSearch" action="">
-        <label for="frmSearch">Can I have your order?</label>
-        <div class="row">
-            <div>
-                <input type="text" name="txtQuery" id="txtQuery">
-            </div>
-            <div>
-                <input type="submit" id="btnSubmit" name="btnSubmit" value="Search" class="btn btn-dark">
-            </div>
-        </div>
-    </form>
-    <div id="responseSummary"> </div> <br>
+    <div class=" container align-items-center img-thumbnail" id="responseSummary"> </div> <br>
 
 
 </body>

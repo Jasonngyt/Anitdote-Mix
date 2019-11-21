@@ -1,6 +1,3 @@
-
-#shopName {
-  background-image: url("../image/wineBottle.jpg");
-  height: 100%;
-  color: white;
+body {
+    background-image: url("../image/background.jpg");
 }
