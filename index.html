@@ -36,14 +36,31 @@
                     let responseInstruction = [];
                     let responseName = [];
                     let responsePhoto = [];
+                    let responseIngredient = [];
+                    let j = 1;
 
                     for (var i = 0; i < response['drinks'].length; i++) {
 
+                        //get the name of the cocktail
                         responseName[i] = response['drinks'][i]['strDrink'];
+
+                        //get the preparation steps of the cocktail
                         responseInstruction[i] = response['drinks'][i]['strInstructions'];
+
+                        //get the photos of the cocktail
                         responsePhoto[i] = response['drinks'][i]['strDrinkThumb'];
 
-                        responseSummary += "<tr> <td> <img src = " + responsePhoto[i] + " style='width:200px;height:200px'>" + "<br> <h4>" + responseName[i] + " </h4><br><td> <h5>Preparation </h5><br>" +
+                        //get the ingredient of the cocktail
+                        responseIngredient[i] = "";
+                        j = 1;
+
+                        while (response['drinks'][i]['strIngredient' + j] != null) {
+                            responseIngredient[i] += response['drinks'][i]['strIngredient' + j] + "<br>";
+                            j++;
+                        }
+
+                        //display all the information
+                        responseSummary += "<tr> <td> <img src = " + responsePhoto[i] + " style='width:200px;height:200px'>" + "<br> <h4>" + responseName[i] + " </h4><td><h5>Ingredient </h5><br>" + responseIngredient[i] + "<td> <h5>Preparation </h5><br>" +
                             responseInstruction[i] + "<br>";
                         $("#responseSummary").html(responseSummary);
 
@@ -62,7 +79,7 @@
             <label for="frmSearch"><h2>Can I have your order?</h2></label>
             <div class="row justify-content-center text-white">
                 <div>
-                    <input type="text" name="txtQuery" id="txtQuery">
+                    <input type="text" name="txtQuery" id="txtQuery" placeholder="Enter the name of the drink">
                 </div>
                 <div>
                     <input type="submit" id="btnSubmit" name="btnSubmit" value="Search" class="btn btn-dark">
@@ -71,8 +88,6 @@
         </form>
     </div>
     <div class=" container align-items-center img-thumbnail" id="responseSummary"> </div> <br>
-
-
 </body>
 
 </html>
