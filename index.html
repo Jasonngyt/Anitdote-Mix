@@ -19,6 +19,31 @@
 
     <script>
         $(document).ready(function() {
+
+            //display popular drink on page load
+            var settings = {
+                "url": "https://www.thecocktaildb.com/api/json/v2/1/popular.php",
+                "method": "GET",
+            }
+
+            $.ajax(settings).done(function(response) {
+                let responseSummary = "";
+                let responseName = [];
+                let responsePhoto = [];
+
+                for (var i = 0; i < response['drinks'].length; i++) {
+
+                    //get the name of the cocktail
+                    responseName[i] = response['drinks'][i]['strDrink'];
+                    responsePhoto[i] = response['drinks'][i]['strDrinkThumb'];
+                    responseSummary += "<tr> <td> <img src = " + responsePhoto[i] + " style='width:200px;height:200px'>" + "<br> <h4>" + responseName[i] + "</h4><tr>";
+                }
+
+                $("#responseSummary").html("<h2>Popular Drink</h2><br>" + responseSummary);
+            });
+
+
+            //display drink on search
             $("#frmSearch").submit(function(e) {
                 e.preventDefault();
                 let query = $("#txtQuery").val();
@@ -72,7 +97,7 @@
 
 </head>
 
-<body class="bg-dark">
+<body>
     <div class="text-center text-white">
         <h1>ANTIDOTE MIX</h1>
         <form id="frmSearch" action="">
