@@ -18,6 +18,45 @@
     <script src="js/jquery-3.4.1.min.js"></script>
 
     <script>
+        function displayDrink(settings, pageTitle) {
+            $.ajax(settings).done(function(response) {
+                //normal JS looping
+                let responseSummary = "";
+                let responseInstruction = [];
+                let responseName = [];
+                let responsePhoto = [];
+                let responseIngredient = [];
+                let j = 1;
+
+                for (var i = 0; i < response['drinks'].length; i++) {
+
+                    //get the name of the cocktail
+                    responseName[i] = response['drinks'][i]['strDrink'];
+
+                    //get the preparation steps of the cocktail
+                    responseInstruction[i] = response['drinks'][i]['strInstructions'];
+
+                    //get the photos of the cocktail
+                    responsePhoto[i] = response['drinks'][i]['strDrinkThumb'];
+
+                    //get the ingredient of the cocktail
+                    responseIngredient[i] = "";
+                    j = 1;
+
+                    while (response['drinks'][i]['strIngredient' + j] != null) {
+                        responseIngredient[i] += response['drinks'][i]['strIngredient' + j] + "<br>";
+                        j++;
+                    }
+
+                    //return the search result
+                    responseSummary += "<div class='container'><div class='row'> <div class = 'col-3'> <img src = " + responsePhoto[i] + " style='width:200px;height:200px'>" + "<br> <h4>" + responseName[i] + " </h4> </div> <div class = 'col-2'><h5>Ingredient </h5><br>" + responseIngredient[i] + "</div> <div class='col-7'><h5>  Preparation </h5><br>" +
+                        responseInstruction[i] + "</div></div></div>";
+
+                }
+                return $("#responseSummary").html(pageTitle + responseSummary)
+            })
+        }
+
         $(document).ready(function() {
 
             //display popular drink on page load
@@ -26,21 +65,7 @@
                 "method": "GET",
             }
 
-            $.ajax(settings).done(function(response) {
-                let responseSummary = "";
-                let responseName = [];
-                let responsePhoto = [];
-
-                for (var i = 0; i < response['drinks'].length; i++) {
-
-                    //get the name of the cocktail
-                    responseName[i] = response['drinks'][i]['strDrink'];
-                    responsePhoto[i] = response['drinks'][i]['strDrinkThumb'];
-                    responseSummary += "<tr> <td> <img src = " + responsePhoto[i] + " style='width:200px;height:200px'>" + "<br> <h4>" + responseName[i] + "</h4><tr>";
-                }
-
-                $("#responseSummary").html("<h2>Popular Drink</h2><br>" + responseSummary);
-            });
+            displayDrink(settings, "<h2>Popular Drink</h2><br>")
 
 
             //display drink on search
@@ -55,42 +80,8 @@
                     "url": "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + query,
                     "method": "GET",
                 }
-                $.ajax(settings).done(function(response) {
-                    //normal JS looping
-                    let responseSummary = "";
-                    let responseInstruction = [];
-                    let responseName = [];
-                    let responsePhoto = [];
-                    let responseIngredient = [];
-                    let j = 1;
+                displayDrink(settings, "")
 
-                    for (var i = 0; i < response['drinks'].length; i++) {
-
-                        //get the name of the cocktail
-                        responseName[i] = response['drinks'][i]['strDrink'];
-
-                        //get the preparation steps of the cocktail
-                        responseInstruction[i] = response['drinks'][i]['strInstructions'];
-
-                        //get the photos of the cocktail
-                        responsePhoto[i] = response['drinks'][i]['strDrinkThumb'];
-
-                        //get the ingredient of the cocktail
-                        responseIngredient[i] = "";
-                        j = 1;
-
-                        while (response['drinks'][i]['strIngredient' + j] != null) {
-                            responseIngredient[i] += response['drinks'][i]['strIngredient' + j] + "<br>";
-                            j++;
-                        }
-
-                        //display all the information
-                        responseSummary += "<tr> <td> <img src = " + responsePhoto[i] + " style='width:200px;height:200px'>" + "<br> <h4>" + responseName[i] + " </h4><td><h5>Ingredient </h5><br>" + responseIngredient[i] + "<td> <h5>Preparation </h5><br>" +
-                            responseInstruction[i] + "<br>";
-                        $("#responseSummary").html(responseSummary);
-
-                    }
-                });
             }
         });
     </script>
