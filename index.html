@@ -17,7 +17,12 @@
     <!-- Jquery -->
     <script src="js/jquery-3.4.1.min.js"></script>
 
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/749eb0769b.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Rakkas&display=swap" rel="stylesheet">
+
     <script>
+        //Function to display the cocktail list
         function displayDrink(settings, pageTitle) {
             $.ajax(settings).done(function(response) {
                 //normal JS looping
@@ -44,31 +49,31 @@
                     j = 1;
 
                     while (response['drinks'][i]['strIngredient' + j] != null) {
-                        responseIngredient[i] += response['drinks'][i]['strIngredient' + j] + "<br>";
+                        responseIngredient[i] += "- " + response['drinks'][i]['strIngredient' + j] + "<br>";
                         j++;
                     }
 
                     //return the search result
-                    responseSummary += "<div class='container'><div class='row'> <div class = 'col-3'> <img src = " + responsePhoto[i] + " style='width:200px;height:200px'>" + "<br> <h4>" + responseName[i] + " </h4> </div> <div class = 'col-2'><h5>Ingredient </h5><br>" + responseIngredient[i] + "</div> <div class='col-7'><h5>  Preparation </h5><br>" +
-                        responseInstruction[i] + "</div></div></div>";
+                    responseSummary += "<div class='row m-3'> <div class = 'col-sm-6 col-md-5 col-lg-3  text-center'> <img src = " + responsePhoto[i] + " style='width:200px;height:200px'>" + "<br> <h5 class='bg-dark text-white'>" + responseName[i] + " </h5> </div> <div class = 'col-sm-6 col-md-5 col-lg-2'><h5>Ingredients</h5><br>" + responseIngredient[i] + "</div> <div class='col-6 d-none d-lg-block'><h5>  Preparation </h5><br>" +
+                        responseInstruction[i] + "</div> <div class = 'col-sm-12 col-md-2 col-lg-1'><input class='btn btn-dark mt-3 mb-3'type='submit' id='btnOrder' name='btnOrder' value='Order'></div></div>";
 
                 }
-                return $("#responseSummary").html(pageTitle + responseSummary)
+                return $("#responseSummary").html("<div class='container'>" + pageTitle + responseSummary + "</div>")
             })
         }
 
         $(document).ready(function() {
 
-            //display popular drink on page load
+            //call the function and display popular cocktail on page load
             var settings = {
                 "url": "https://www.thecocktaildb.com/api/json/v2/1/popular.php",
                 "method": "GET",
             }
 
-            displayDrink(settings, "<h2>Popular Drink</h2><br>")
+            displayDrink(settings, "<h3>Our Recommendations</h3><br>")
 
 
-            //display drink on search
+            //call the function and display searched cocktail
             $("#frmSearch").submit(function(e) {
                 e.preventDefault();
                 let query = $("#txtQuery").val();
@@ -90,15 +95,15 @@
 
 <body>
     <div class="text-center text-white">
-        <h1>ANTIDOTE MIX</h1>
+        <p class="shopName">ANTID<i class="fas fa-cocktail"></i>TE MIX</p>
         <form id="frmSearch" action="">
-            <label for="frmSearch"><h2>Can I have your order?</h2></label>
-            <div class="row justify-content-center text-white">
-                <div>
-                    <input type="text" name="txtQuery" id="txtQuery" placeholder="Enter the name of the drink">
+            <label for="frmSearch"><h3>Can I get you a drink?</h3></label>
+            <div class="row justify-content-center text-white m-3">
+                <div class="mr-3">
+                    <input class="form-control input-lg" type="text" name="txtQuery" id="txtQuery" placeholder="Enter name of cocktail ">
                 </div>
                 <div>
-                    <input type="submit" id="btnSubmit" name="btnSubmit" value="Search" class="btn btn-dark">
+                    <button class="btn btn-dark" type="submit" id="btnSubmit" name="btnSubmit" alt="Search"><i class='fas fa-search'></i></button>
                 </div>
             </div>
         </form>
