@@ -88,10 +88,13 @@ The letter ‘o’ is represented by the cocktail icon from Font Awesome. Custom
 The website was tested on mobile phone, tablets and desktop. In addition, the website was tested using different viewport under the inspector tools. The site is fully responsive - it's mobile, tablet and desktop-friendly.
 
 #### Desktop View
+<img src = "image/desktop.jpg">
 
 #### Tablet View
+<img src = "image/tablet.jpg">
 
 #### Mobile View
+<img src = "image/mobile.jpg">
 
 ### Browser Compatibility
 The application was tested on Firefox and Google Chrome. The site functioned satisfactorily on both browsers. 
