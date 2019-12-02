@@ -9,6 +9,9 @@ Details like photos, ingredients and preparation steps of the cocktail will be d
 
 The customers are able to order their cocktails directly through the menu without waiting for the waiter to take order thus improving the customer experience and increase the productivity. 
 
+The interactive menu is deplyed in the link below: <br />
+
+https://jasonngyt.github.io/Anitdote-Mix/index.html
 ## Project Strategy
 ### UX - User Stories
 #### User Stories (Customer)
