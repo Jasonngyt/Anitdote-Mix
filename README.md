@@ -1,15 +1,6 @@
-         ___        ______     ____ _                 _  ___  
-        / \ \      / / ___|   / ___| | ___  _   _  __| |/ _ \ 
-       / _ \ \ /\ / /\___ \  | |   | |/ _ \| | | |/ _` | (_) |
-      / ___ \ V  V /  ___) | | |___| | (_) | |_| | (_| |\__, |
-     /_/   \_\_/\_/  |____/   \____|_|\___/ \__,_|\__,_|  /_/ 
- ----------------------------------------------------------------- 
-
-
-Hi there! Welcome to AWS Cloud9!
-
-To get started, create some files, play with the terminal,
-or visit https://docs.aws.amazon.com/console/cloud9/ for our documentation.
-
-Happy coding!
-# Anitdote-Mix
+#Antidote Mix Bar
+This project focuses on creating a interactive cocktail menu for a bar, Antidote Mix. The target audience for this menu are the customers of the bar.
+Antidote Mix was established in 2010. The bar always believe in evolving and creating the ‘special drink’ for their customers. Till date, the bar offers up to 500 different types of cocktails. A static paper menu is unable to display the huge list. 
+The bar is looking at a interactive menu for their customer to search for their favourite cocktail. The interactive menu also allow the bar to constantly add in their newest creation without having to reprint the paper menu. 
+Details like photos, ingredients and preparation steps of the cocktail will be displayed in the search result to introduce the cocktails to their customer.
+The customers are able to order their cocktails directly through the menu without waiting for the waiter to take order thus improving the customer experience and increase the productivity. 
