@@ -99,34 +99,11 @@ The application was tested on Firefox and Google Chrome. The site functioned sat
 ### Test Cases
 
 | Test Case(s) | Test Description | Outcome | Result |
-|     ---       |       ---        |    ---   |  ---   |
-| 1 | Click Index.html to access web page, the list of recommended cocktail should be listed automatically when the page is load.
-Make sure that the photos of the cocktail, name, ingredients and instruction do not overlap each other. | The list of recommended cocktail is automatically displayed when the page is load.
-The photos of the cocktail, name, ingredients and instruction do not overlap each other. | Pass |
-| 2 | Open postman application. Key in the API address under United Request and click the Send Button.
-https://www.thecocktaildb.com/api/json/v2/1/popular.php
-This list contains the popular and new cocktail. The data in the JSON file will be display. 
-Click Index.html to access web page. Compare Our Recommendation list in the web page with the data of JSON.
-The following should match: 
-- strDrinks in the JSON match the cocktail name in the Recommendation list
-- strDrinkThumbs in the JSON match the photos of the cocktail in the Recommendation list
-- strIngredients in the JSON match the Ingredient list in Recommendation list. 
-- strInstructions in the JSON match the Preparation in the Recommendation. | The list under Our Recommendation match with the data of the JSON file.
-| Pass |
-| 3 | Click Index.html to access web page. Enter the name of the cocktail (for example, margarita) in the text box and click on the search button.
-Open postman application. Key in the API address under United Request with the name of the cocktail and click the Send Button.
-https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita
-Compare search result in the web page with the data of JSON.
-The following should match: 
-- strDrinks in the JSON match the cocktail name in the search result.
- strDrinkThumbs in the JSON match the photos of the cocktail in the search result.
-- strIngredients in the JSON match the Ingredient list in search result. 
-- strInstructions in the JSON match the Preparation in the search result. | The search results displayed match the value in the postman application. | Pass |
-| 4 | Open index.html with different web browser. Test by using different viewport under the inspector tools, Desktop view, Tablet view, Mobile view. 
-View the menu using different device, mobile, tablet and laptop.
-All the website layout should be mobile responsive and follow the layout as stated in the wireframe.
-The preparation steps should not be display in the mobile and table view. | The website is mobile responsive with mobile, tablet, desktop and with different browser.
-The preparation steps did not display in mobile and tablet view. | Pass |
+| --- | --- | --- | --- |
+| 1 | Click Index.html to access web page, the list of recommended cocktail should be listed automatically when the page is load.<br /><br /> Make sure that the photos of the cocktail, name, ingredients and instruction do not overlap each other. | The list of recommended cocktail is automatically displayed when the page is load. <br /><br /> The photos of the cocktail, name, ingredients and instruction do not overlap each other. | Pass |
+| 2 | Open postman application. Key in the API address under United Request and click the Send Button. https://www.thecocktaildb.com/api/json/v2/1/popular.php <br /><br />This list contains the popular and new cocktail. The data in the JSON file will be display. Click Index.html to access web page. Compare Our Recommendation list in the web page with the data of JSON. <br /> <br />The following should match: <br />- strDrinks in the JSON match the cocktail name in the Recommendation list<br />- strDrinkThumbs in the JSON match the photos of the cocktail in the Recommendation list<br />- strIngredients in the JSON match the Ingredient list in Recommendation list. <br />- strInstructions in the JSON match the Preparation in the Recommendation. | The list under Our Recommendation match with the data of the JSON file.| Pass |
+| 3 | Click Index.html to access web page. Enter the name of the cocktail (for example, margarita) in the text box and click on the search button. <br /><br />Open postman application. Key in the API address under United Request with the name of the cocktail and click the Send Button. https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita. <br />Compare search result in the web page with the data of JSON.<br /><br />The following should match: <br />- strDrinks in the JSON match the cocktail name in the search result.<br />- strDrinkThumbs in the JSON match the photos of the cocktail in the search result.<br />- strIngredients in the JSON match the Ingredient list in search result. <br />- strInstructions in the JSON match the Preparation in the search result. | The search results displayed match the value in the postman application. | Pass |
+| 4 | Open index.html with different web browser. Test by using different viewport under the inspector tools, Desktop view, Tablet view, Mobile view. <br /><br />View the menu using different device, mobile, tablet and laptop.<br /><br />All the website layout should be mobile responsive and follow the layout as stated in the wireframe.<br />The preparation steps should not be display in the mobile and table view. | The website is mobile responsive with mobile, tablet, desktop and with different browser.<br /><br />The preparation steps did not display in mobile and tablet view. | Pass |
 
 ### Problems Encountered/Bugs solved
 * I was unable to load JQuery file through the web link. The JQuery min file is downloaded into the local repository to rectify the problem.
