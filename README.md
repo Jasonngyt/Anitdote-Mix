@@ -19,10 +19,10 @@ The customers are able to order their cocktails directly through the menu withou
 
 #### Organization Goals (Bar)
 The society wants to create a interactive menu for better customer experience. As such, the following organization goals have been identified:
-1)Organization would like to allow the customers to search through their huge selection of cocktails easily for the cocktail that they wanted.
-2)Organization would like to update their new cocktails constantly into the menu. 
-3)Organization would like to recommend the new and popular cocktails to their customer by displaying them in the first page before customer start the search.
-Organization would like the customers to order directly with the menu. This will cut down manpower resources for ordering, improve productivity and customer experience.
+1) Organization would like to allow the customers to search through their huge selection of cocktails easily for the cocktail that they wanted.
+2) Organization would like to update their new cocktails constantly into the menu. 
+3) Organization would like to recommend the new and popular cocktails to their customer by displaying them in the first page before customer start the search.
+4) Organization would like the customers to order directly with the menu. This will cut down manpower resources for ordering, improve productivity and customer experience.
 
 ## Project Scope
 Based on the user stories and organizational goals identified, these are the following features the website is going to implement:
@@ -99,6 +99,7 @@ The application was tested on Firefox and Google Chrome. The site functioned sat
 ### Test Cases
 
 | Test Case(s) | Test Description | Outcome | Result |
+|     ---       |       ---        |    ---   |
 | 1 | Click Index.html to access web page, the list of recommended cocktail should be listed automatically when the page is load.
 Make sure that the photos of the cocktail, name, ingredients and instruction do not overlap each other. | The list of recommended cocktail is automatically displayed when the page is load.
 The photos of the cocktail, name, ingredients and instruction do not overlap each other. | Pass |
