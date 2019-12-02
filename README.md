@@ -1,4 +1,4 @@
-#Antidote Mix Bar
+# Antidote Mix Bar
 This project focuses on creating a interactive cocktail menu for a bar, Antidote Mix. The target audience for this menu are the customers of the bar.
 Antidote Mix was established in 2010. The bar always believe in evolving and creating the ‘special drink’ for their customers. Till date, the bar offers up to 500 different types of cocktails. A static paper menu is unable to display the huge list. 
 The bar is looking at a interactive menu for their customer to search for their favourite cocktail. The interactive menu also allow the bar to constantly add in their newest creation without having to reprint the paper menu. 
