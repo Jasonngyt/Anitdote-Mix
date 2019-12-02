@@ -99,7 +99,7 @@ The application was tested on Firefox and Google Chrome. The site functioned sat
 ### Test Cases
 
 | Test Case(s) | Test Description | Outcome | Result |
-|     ---       |       ---        |    ---   |
+|     ---       |       ---        |    ---   |  ---   |
 | 1 | Click Index.html to access web page, the list of recommended cocktail should be listed automatically when the page is load.
 Make sure that the photos of the cocktail, name, ingredients and instruction do not overlap each other. | The list of recommended cocktail is automatically displayed when the page is load.
 The photos of the cocktail, name, ingredients and instruction do not overlap each other. | Pass |
