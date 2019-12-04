@@ -21,7 +21,36 @@
     <script src="https://kit.fontawesome.com/749eb0769b.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css?family=Rakkas&display=swap" rel="stylesheet">
 
+    <!-- Firebase Script-->
+
+    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-app.js"></script>
+
+    <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+    <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-database.js"></script>
+
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-firestore.js"></script>
+
+
     <script>
+        //Firebase Configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyCF13jHJT6wPauDrv0pAyZNdQye1t9nqxg",
+            authDomain: "antidote-mix.firebaseapp.com",
+            databaseURL: "https://antidote-mix.firebaseio.com",
+            projectId: "antidote-mix",
+            storageBucket: "antidote-mix.appspot.com",
+            messagingSenderId: "766504519325",
+            appId: "1:766504519325:web:fe40f39c472ad6e4d2b674"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+
         //Function to display the cocktail list
         function displayDrink(settings, pageTitle) {
             $.ajax(settings).done(function(response) {
@@ -54,18 +83,26 @@
                     }
 
                     //return the search result
-                    responseSummary += "<div class='row m-3'> <div class = 'col-sm-6 col-md-5 col-lg-3  text-center'> <img src = " + responsePhoto[i] + " style='width:200px;height:200px'>" + "<br> <h5 class='bg-dark text-white'>" + responseName[i] + " </h5> </div> <div class = 'col-sm-6 col-md-5 col-lg-2'><h5>Ingredients</h5><br>" + responseIngredient[i] + "</div> <div class='col-6 d-none d-lg-block'><h5>  Preparation </h5><br>" +
-                        responseInstruction[i] + "</div> <div class = 'col-sm-12 col-md-2 col-lg-1'><input class='btn btn-dark mt-3 mb-3'type='submit' id='btnOrder' name='btnOrder' value='Order'></div></div>";
+                    responseSummary += "<div class='row m-3'> <div class = 'col-sm-6 col-md-5 col-lg-3  text-center'> <img src = " + responsePhoto[i] + " style='width:200px;height:200px'>" + "<br> <h5 class='bg-dark text-white'>" + responseName[i] + " </h5> </div> <div class = 'col-sm-6 col-md-4 col-lg-2'><h5>Ingredients</h5><br>" + responseIngredient[i] + "</div> <div class='col-6 d-none d-lg-block'><h5>  Preparation </h5><br>" +
+                        responseInstruction[i] + "</div> <div class = 'col-sm-12 col-md-2 col-lg-1'> Table: <input type='text' maxlength='2' size='2' id='tableNumber'><button type='submit' class='btn btn-dark mt-3 mb-3' onClick='writeData()'>Order</button></div></div>";
 
                 }
                 return $("#responseSummary").html("<div class='container'>" + pageTitle + responseSummary + "</div>")
             })
         }
 
+        // Function to write the order to firebase database
+        function writeData() {
+            firebase.database().ref("drink").set({
+                name: document.getElementById("nameField").value,
+                table: document.getElementById("tableNumber").value
+            });
+        }
+
         $(document).ready(function() {
 
             //call the function and display popular cocktail on page load
-            var settings = {
+            let settings = {
                 "url": "https://www.thecocktaildb.com/api/json/v2/1/popular.php",
                 "method": "GET",
             }
@@ -81,13 +118,14 @@
             });
 
             function findDrink(query) {
-                var settings = {
+                let settings = {
                     "url": "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + query,
                     "method": "GET",
                 }
                 displayDrink(settings, "")
 
             }
+
         });
     </script>
 
@@ -108,7 +146,11 @@
             </div>
         </form>
     </div>
-    <div class=" container align-items-center img-thumbnail" id="responseSummary"> </div> <br>
+    <div class="container align-items-center img-thumbnail" id="responseSummary"> </div>
+
+
+    <input type="text" placeholder="name" id="nameField">
+
 </body>
 
 </html>
