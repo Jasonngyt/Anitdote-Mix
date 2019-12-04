@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Antidote Mix Bar</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- My Style CSS -->
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+
+    <!-- Jquery -->
+    <script src="js/jquery-3.4.1.min.js"></script>
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/749eb0769b.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Rakkas&display=swap" rel="stylesheet">
+
+    <!-- Firebase Script-->
+
+    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-app.js"></script>
+
+    <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+    <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-database.js"></script>
+
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-firestore.js"></script>
+
+
+    <script>
+        //Firebase Configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyCF13jHJT6wPauDrv0pAyZNdQye1t9nqxg",
+            authDomain: "antidote-mix.firebaseapp.com",
+            databaseURL: "https://antidote-mix.firebaseio.com",
+            projectId: "antidote-mix",
+            storageBucket: "antidote-mix.appspot.com",
+            messagingSenderId: "766504519325",
+            appId: "1:766504519325:web:fe40f39c472ad6e4d2b674"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        var ref = firebase.database().ref().child("drink");
+
+        // retreive the order from firebase data
+        ref.on("value", snap => {
+            var name = snap.child("name").val();
+            var table = snap.child("table").val();
+
+            var orderSummary = "<div class='container text-dark bg-light mt-2 col-5 p-5'><div> Cocktail:     " + name + "</div> <div class='pt-3'> Table Number:     " + table + "</div></div>"
+
+            return $("#data").html(orderSummary);
+        });
+
+        //Function to clear the order when the order is delivered to customer
+        function delData() {
+            firebase.database().ref("drink").set({
+                name: "",
+                table: ""
+            });
+        }
+    </script>
+
+</head>
+
+<body>
+    <div class="text-center text-white">
+        <p class="shopName">ANTID<i class="fas fa-cocktail"></i>TE MIX</p>
+        <h2 class="mt-5"> Order List </h2>
+
+        <!--Display the order from the customer-->
+        <h3 id="data"></h3>
+
+        <!--Clear the order when the button is click-->
+        <button class="btn btn-dark mt-2" onClick='delData()'>Order Done</button>
+    </div>
+
+
+</body>
+
+</html>
