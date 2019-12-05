@@ -50,7 +50,6 @@
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
 
-
         //Function to display the cocktail list
         function displayDrink(settings, pageTitle) {
             $.ajax(settings).done(function(response) {
@@ -84,11 +83,16 @@
 
                     //return the search result
                     responseSummary += "<div class='row m-3'> <div class = 'col-sm-6 col-md-5 col-lg-3  text-center'> <img src = " + responsePhoto[i] + " style='width:200px;height:200px'>" + "<br> <h5 class='bg-dark text-white'>" + responseName[i] + " </h5> </div> <div class = 'col-sm-6 col-md-4 col-lg-2'><h5>Ingredients</h5><br>" + responseIngredient[i] + "</div> <div class='col-6 d-none d-lg-block'><h5>  Preparation </h5><br>" +
-                        responseInstruction[i] + "</div> <div class = 'col-sm-12 col-md-2 col-lg-1'> Table: <input type='text' maxlength='2' size='2' id='tableNumber'><button type='submit' class='btn btn-dark mt-3 mb-3' onClick='writeData()'>Order</button></div></div>";
+                        responseInstruction[i] + "</div> <div class = 'col-sm-12 col-md-2 col-lg-1'><h5> Table: </h5><input type='text' maxlength='2' size='2' id='tableNumber'><button type='submit' class='btn btn-dark mt-3 mb-3' onClick='writeData(); frmReset();'>Order</button></div></div>";
 
                 }
                 return $("#responseSummary").html("<div class='container'>" + pageTitle + responseSummary + "</div>")
             })
+        }
+
+        //Function to reset the table number after order
+        function frmReset() {
+            $('#tableNumber').val('');
         }
 
         // Function to write the order to firebase database
@@ -98,6 +102,7 @@
                 table: document.getElementById("tableNumber").value
             });
         }
+
 
         $(document).ready(function() {
 
