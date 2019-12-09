@@ -53,6 +53,11 @@ Based on the user stories and organizational goals identified, these are the fol
 ## Project Structure
 ### Wire Frame
 
+The wireframe can be viewed in the link below: <br />
+
+https://drive.google.com/file/d/1k3HamcNfgsHCmlOxEVWmjauL7kIzhJnb/view
+
+
 ## Project Skeleton
 ### Existing Features
 The layout of the interactive menu, index.html, is kept simple and user friendly for the customer. There is no complicated drop down list or sub category that the customer have to click to look for their cocktail. The default refresh is disabled to prevent the page from reloading so as to speed up the search process and enhance the customer experience.
