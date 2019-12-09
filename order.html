@@ -52,12 +52,12 @@
 
         var ref = firebase.database().ref().child("drink");
 
-        // retreive the order from firebase data
+        // Retreive the order from firebase data
         ref.on("value", snap => {
             var name = snap.child("name").val();
             var table = snap.child("table").val();
 
-            var orderSummary = "<div class='container text-dark bg-light mt-2 col-5 p-5'><div> Cocktail:     " + name + "</div> <div class='pt-3'> Table Number:     " + table + "</div></div>"
+            var orderSummary = "<div class='container text-dark bg-light mt-2 col-md-5 col-sd-12 p-5'><div> Cocktail:     " + name + "</div> <div class='pt-3'> Table Number:     " + table + "</div></div>"
 
             return $("#data").html(orderSummary);
         });
@@ -74,15 +74,25 @@
 </head>
 
 <body>
+
     <div class="text-center text-white">
-        <p class="shopName">ANTID<i class="fas fa-cocktail"></i>TE MIX</p>
-        <h2 class="mt-5"> Order List </h2>
+        <div class="container">
+            <p class="shopName">ANTID<i class="fas fa-cocktail"></i>TE MIX</p>
+        </div>
+
+        <div class="container">
+            <h2 class="mt-5"> Order List </h2>
+        </div>
 
         <!--Display the order from the customer-->
-        <h3 id="data"></h3>
+        <div class="container">
+            <h3 id="data"></h3>
+        </div>
 
         <!--Clear the order when the button is click-->
-        <button class="btn btn-dark mt-2" onClick='delData()'>Order Done</button>
+        <div class="container">
+            <button class="btn btn-dark mt-2" onClick='delData()'>Order Done</button>
+        </div>
     </div>
 
 
