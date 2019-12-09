@@ -71,8 +71,8 @@ The order page will retrieve this information from the database. Bartender is ab
 
 ### Features to implement in the future
 1) The current order page takes only one order each time. I will like to add in the feature to take in multiple orders.
-2) I wished to add billing feature so that the customer can view their order so far and the bills.
-2) I wished to add a user friendly page for the bar to manage their cocktail list, so that they do not have to update through the JSON file. ie. Add/Update/Delete the cocktail from the list.
+2) I wish to add billing feature so that the customer can view their order so far and the bills.
+2) I wish to add a user friendly page for the bar to manage their cocktail list, so that they do not have to update through the JSON file. ie. Add/Update/Delete the cocktail from the list.
 
 ## Project Surface
 The theme that I wished to present is simple and user-friendly interactive menu. Customer do not have go through the hassle of clicking individual drop down list or sub-catalogue to look for their drink. They can simply key in name of the cocktail to find their drink using the search function provided.
