@@ -83,10 +83,10 @@
 
                     //return the search result
                     responseSummary += "<div class='row m-3'> <div class = 'col-sm-6 col-md-5 col-lg-3  text-center'> <img src = " + responsePhoto[i] + " style='width:200px;height:200px'>" + "<br> <h5 class='bg-dark text-white'>" + responseName[i] + " </h5> </div> <div class = 'col-sm-6 col-md-4 col-lg-2'><h5>Ingredients</h5><br>" + responseIngredient[i] + "</div> <div class='col-6 d-none d-lg-block'><h5>  Preparation </h5><br>" +
-                        responseInstruction[i] + "</div> <div class = 'col-sm-12 col-md-2 col-lg-1'><h5> Table: </h5><input type='text' maxlength='2' size='2' id='tableNumber'><button type='submit' class='btn btn-dark mt-3 mb-3' onClick='writeData(); frmReset();'>Order</button></div></div>";
+                        responseInstruction[i] + "</div> <div class = 'col-sm-12 col-md-2 col-lg-1'><div><h5> Table: </h5></div><div><input type='text' maxlength='2' size='2' id='tableNumber'></div><div><button class='btn btn-dark mt-3 mb-3' type='submit' id='drinkButton' value =" + responseName[i] + " onClick='writeData(); frmReset();'>Order</button></div></div></div>";
 
                 }
-                return $("#responseSummary").html("<div class='container'>" + pageTitle + responseSummary + "</div>")
+                return $("#responseSummary").html(pageTitle + responseSummary);
             })
         }
 
@@ -97,12 +97,14 @@
 
         // Function to write the order to firebase database
         function writeData() {
+
+            var dname = document.getElementById("drinkButton").value;
+
             firebase.database().ref("drink").set({
-                name: document.getElementById("nameField").value,
+                name: dname,
                 table: document.getElementById("tableNumber").value
             });
         }
-
 
         $(document).ready(function() {
 
@@ -151,10 +153,7 @@
             </div>
         </form>
     </div>
-    <div class="container align-items-center img-thumbnail" id="responseSummary"> </div>
-
-
-    <input type="text" placeholder="name" id="nameField">
+    <div class="container align-items-center img-thumbnail" id="responseSummary"></div>
 
 </body>
 
