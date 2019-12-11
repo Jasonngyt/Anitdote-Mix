@@ -98,10 +98,8 @@
         // Function to write the order to firebase database
         function writeData() {
 
-            var dname = document.getElementById("drinkButton").value;
-
             firebase.database().ref("drink").set({
-                name: dname,
+                name: document.getElementById("drinkButton").value,
                 table: document.getElementById("tableNumber").value
             });
         }
